@@ -6,6 +6,8 @@ const fs = require('fs/promises');
 //!Multer
 const multer = require('multer'); //?npm install multer
 const path = require('path');
+const { request } = require('http');
+const { receiveMessageOnPort } = require('worker_threads');
 
 const storage = multer.diskStorage({
     destination: (request, file, callback) => {
@@ -20,11 +22,31 @@ const upload = multer({ storage });
 
 //!Endpoints:
 //?GET /api/test
-router.get('/test', (request, response) => {
+router.get('/test', (request, response) => {  //
     response.status(200).json({
         message: 'Ez a végpont működik.'
     });
 });
+
+router.get(`/brunokiraly`, (request,response)=>{
+    console.log(request)
+    request.json(200)({
+        staus: "success",
+        message : "HIHAHA"
+    })
+})
+router.get("/poka/vala/:vak", (request, response)=>{
+    const valami = request.params.valami
+
+
+})
+
+router.post("/data", (request,response)=>{
+    const data = request.body
+    response.status(200).json({
+        rec
+    })
+})
 
 //?GET /api/testsql
 router.get('/testsql', async (request, response) => {

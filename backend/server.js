@@ -27,6 +27,9 @@ app.use(
 router.get('/', (request, response) => {
     response.sendFile(path.join(__dirname, '../frontend/html/index.html'));
 });
+router.get('/bruno', (request, response) => {
+    response.sendFile(path.join(__dirname, '../frontend/html/bruno.html'));
+});//az elso parameter az urlben az elerhetoseg, vagyis jelne esetben az url/bruno, a sendfile visszaadja az utvonalban levo filet.
 
 //!API endpoints
 app.use('/', router);
