@@ -9,6 +9,9 @@ const postmethod = async(url, data)=>{
             body : JSON.stringify(data)
         })
     }
+    catch{
+        throw 
+    }
 
 
 }
